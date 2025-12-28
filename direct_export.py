@@ -165,6 +165,12 @@ def main():
             if bot_token and chat_id:
                 print(f"Sending {title} to Telegram...")
                 send_telegram_photo(bot_token, chat_id, image_path, caption=title)
+                # Cleanup final image after sending
+                try:
+                    os.remove(image_path)
+                    print(f"Removed temp file: {image_path}")
+                except Exception as e:
+                    print(f"Warning: Could not remove {image_path}: {e}")
             else:
                 print("Telegram credentials missing.")
         else:
