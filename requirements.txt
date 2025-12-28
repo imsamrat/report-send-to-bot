@@ -3,6 +3,6 @@ google-auth
 google-auth-oauthlib
 google-auth-httplib2
 python-dotenv
-plotly
-kaleido
 requests
+pymupdf
+Pillow
