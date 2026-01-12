@@ -146,7 +146,8 @@ def main():
     ranges = [
         ("Daily Summary", os.getenv('RANGE_1')),
         ("Report 2", os.getenv('RANGE_2')),
-        ("Report 3", os.getenv('RANGE_3'))
+        ("Report 3", os.getenv('RANGE_3')),
+        ("Report 4", os.getenv('RANGE_4'))
     ]
     
     bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
