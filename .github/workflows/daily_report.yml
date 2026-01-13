@@ -2,7 +2,7 @@ name: Daily Report
 
 on:
   schedule:
-    - cron: '30 23 * * *' # 5:30 AM Dhaka (UTC+6)
+    - cron: "30 23 * * *" # 5:30 AM Dhaka (UTC+6)
   workflow_dispatch:
 
 jobs:
@@ -10,26 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
-    - name: Install Dependencies
-      run: |
-        pip install -r requirements.txt
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
 
-    - name: Run Direct Export Report
-      env:
-        GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
-        SHEET_ID: ${{ secrets.SHEET_ID }}
-        SHEET_NAME: ${{ secrets.SHEET_NAME }}
-        RANGE_1: ${{ secrets.RANGE_1 }}
-        RANGE_2: ${{ secrets.RANGE_2 }}
-        RANGE_3: ${{ secrets.RANGE_3 }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      run: python direct_export.py
+      - name: Run Direct Export Report
+        env:
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+          SHEET_NAME: ${{ secrets.SHEET_NAME }}
+          RANGE_1: ${{ secrets.RANGE_1 }}
+          RANGE_2: ${{ secrets.RANGE_2 }}
+          RANGE_3: ${{ secrets.RANGE_3 }}
+          RANGE_4: ${{ secrets.RANGE_4 }} #addd new
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python direct_export.py
